@@ -1,0 +1,20 @@
+{
+  "source": "澳門特別行政區政府印務局",
+  "last_updated": "2026-01-14",
+  "laws": [
+    {"id": "codprotra", "name_zh": "勞動訴訟法典", "name_en": "Labour Procedure Code", "url": "https://bo.dsaj.gov.mo/bo/i/2003/26/codprotracn/codprotra001.asp"},
+    {"id": "codpac", "name_zh": "行政訴訟法典", "name_en": "Administrative Litigation Code", "url": "https://bo.dsaj.gov.mo/bo/i/99/50/codpaccn/codpac001.asp"},
+    {"id": "codrjpi", "name_zh": "工業產權法律制度", "name_en": "Industrial Property Legal System", "url": "https://bo.dsaj.gov.mo/bo/i/99/50/codrjpicn/codrjpi001.asp"},
+    {"id": "codrct", "name_zh": "法院訴訟費用制度", "name_en": "Court Costs System", "url": "https://bo.dsaj.gov.mo/bo/i/99/43/codrctcn/codrct001.asp"},
+    {"id": "codnot", "name_zh": "公證法典", "name_en": "Notary Code", "url": "https://bo.dsaj.gov.mo/bo/i/99/43/codnotcn/codnot001.asp"},
+    {"id": "codregciv", "name_zh": "民事登記法典", "name_en": "Civil Registration Code", "url": "https://bo.dsaj.gov.mo/bo/i/99/42/codregcivcn/codregciv001.asp"},
+    {"id": "codpa", "name_zh": "行政程序法典", "name_en": "Administrative Procedure Code", "url": "https://bo.dsaj.gov.mo/bo/i/99/41/codpacn/codpa001.asp"},
+    {"id": "codregcom", "name_zh": "商業登記法典", "name_en": "Commercial Registration Code", "url": "https://bo.dsaj.gov.mo/bo/i/99/41/codregcomcn/codregcom001.asp"},
+    {"id": "codprociv", "name_zh": "民事訴訟法典", "name_en": "Civil Procedure Code", "url": "https://bo.dsaj.gov.mo/bo/i/99/40/codprocivcn/codprociv0001.asp"},
+    {"id": "codrp", "name_zh": "物業登記法典", "name_en": "Property Registration Code", "url": "https://bo.dsaj.gov.mo/bo/i/99/38/codrpcn/codrp001.asp"},
+    {"id": "codcom", "name_zh": "商法典", "name_en": "Commercial Code", "url": "https://bo.dsaj.gov.mo/bo/i/99/31/codcomcn/codcom0001.asp"},
+    {"id": "codciv", "name_zh": "民法典", "name_en": "Civil Code", "url": "https://bo.dsaj.gov.mo/bo/i/99/31/codcivcn/codciv0001.asp"},
+    {"id": "codpropen", "name_zh": "刑事訴訟法典", "name_en": "Criminal Procedure Code", "url": "https://bo.dsaj.gov.mo/bo/i/96/36/codpropencn/codpropen0001.asp"},
+    {"id": "codpen", "name_zh": "刑法典", "name_en": "Penal Code", "url": "https://bo.dsaj.gov.mo/bo/i/95/46/codpencn/codpen0001.asp"}
+  ]
+}
