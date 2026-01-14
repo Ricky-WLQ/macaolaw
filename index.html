@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>澳門法律法典索引 | Macao Legal Codes Index</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #00d4ff, #7b2cbf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .subtitle {
+            color: #888;
+            font-size: 1rem;
+        }
+        .source {
+            margin-top: 10px;
+            font-size: 0.85rem;
+            color: #666;
+        }
+        .source a {
+            color: #00d4ff;
+            text-decoration: none;
+        }
+        .laws-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .law-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        .law-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #00d4ff;
+            transform: translateX(5px);
+        }
+        .law-info {
+            flex: 1;
+        }
+        .law-name-zh {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .law-name-en {
+            font-size: 0.85rem;
+            color: #888;
+        }
+        .law-link {
+            background: linear-gradient(90deg, #00d4ff, #7b2cbf);
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+        .law-link:hover {
+            opacity: 0.8;
+        }
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #666;
+            font-size: 0.85rem;
+        }
+        footer a {
+            color: #00d4ff;
+            text-decoration: none;
+        }
+        .category {
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: #00d4ff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+        }
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .law-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            .law-link {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>澳門法律法典索引</h1>
+            <p class="subtitle">Macao Special Administrative Region Legal Codes Index</p>
+            <p class="source">資料來源 Source: <a href="https://bo.dsaj.gov.mo" target="_blank">澳門特別行政區政府印務局</a></p>
+        </header>
+
+        <main class="laws-grid">
+            <div class="category">基本法典 / Fundamental Codes</div>
+            
+            <div class="law-card">
+                <div class="law-info">
+                    <div class="law-name-zh">民法典</div>
+                    <div class="law-name-en">Civil Code</div>
+                </div>
+                <a href="https://bo.dsaj.gov.mo/bo/i/99/31/codcivcn/codciv0001.asp" target="_blank" class="law-link">查看 View</a>
+            </div>
+
+            <div class="law-card">
+                <div class="law-info">
+                    <div class="law-name-zh">刑法典</div>
+                    <div class="law-name-en">Penal Code</div>
+                </div>
+                <a href="https://bo.dsaj.gov.mo/bo/i/95/46/codpencn/codpen0001.asp" target="_blank" class="law-link">查看 View</a>
+            </div>
+
+            <div class="law-card">
+                <div class="law-info">
+                    <div class="law-name-zh">商法典</div>
+                    <div class="law-name-en">Commercial Code</div>
+                </div>
+                <a href="https://bo.dsaj.gov.mo/bo/i/99/31/codcomcn/codcom0001.asp" target="_blank" class="law-link">查看 View</a>
+            </div>
+
+            <div class="category">訴訟法典 / Procedure Codes</div>
+
+            <div class="law-card">
+                <div class="law-info">
+                    <div class="law-name-zh">民事訴訟法典</div>
+                    <div class="law-name-en">Civil Procedure Code</div>
+                </div>
+                <a href="https://bo.dsaj.gov.mo/bo/i/99/40/codprocivcn/codprociv0001.asp" target="_blank" class="law-link">查看 View</a>
+            </div>
+
+            <div class="law-card">
+                <div class="law-info">
+                    <div class="law-name-zh">刑事訴訟法典</div>
+                    <div class="law-name-en">Criminal Procedure Code</div>
+                </div>
+                <a href="https://bo.dsaj.gov.mo/bo/i/96/36/codpropencn/codpropen0001.asp" target="_blank" class="law-link">查看 View</a>
+            </div>
+
+            <div class="law-card">
+                <div class="law-info">
+                    <div class="law-name-zh">行政訴訟法典</div>
+                    <div class="law-name-en">Administrative Litigation Code</div>
+                </div>
+                <a href="https://bo.dsaj.gov.mo/bo/i/99/50/codpaccn/codpac001.asp" target="_blank" class="law-link">查看 View</a>
+            </div>
+
+            <div class="law-card">
+                <div class="law-info">
+                    <div class="law-name-zh">勞動訴訟法典</div>
+                    <div class="law-name-en">Labour Procedure Code</div>
+                </div>
+                <a href="https://bo.dsaj.gov.mo/bo/i/2003/26/codprotracn/codprotra001.asp" target="_blank" class="law-link">查看 View</a>
+            </div>
+
+            <div class="category">行政法規 / Administrative Regulations</div>
+
+            <div class="law-card">
+                <div class="law-info">
+                    <div class="law-name-zh">行政程序法典</div>
+                    <div class="law-name-en">Administrative Procedure Code</div>
+                </div>
+                <a href="https://bo.dsaj.gov.mo/bo/i/99/41/codpacn/codpa001.asp" target="_blank" class="law-link">查看 View</a>
+            </div>
+
+            <div class="law-card">
+                <div class="law-info">
+                    <div class="law-name-zh">法院訴訟費用制度</div>
+                    <div class="law-name-en">Court Costs System</div>
+                </div>
+                <a href="https://bo.dsaj.gov.mo/bo/i/99/43/codrctcn/codrct001.asp" target="_blank" class="law-link">查看 View</a>
+            </div>
+
+            <div class="category">登記法典 / Registration Codes</div>
+
+            <div class="law-card">
+                <div class="law-info">
+                    <div class="law-name-zh">民事登記法典</div>
+                    <div class="law-name-en">Civil Registration Code</div>
+                </div>
+                <a href="https://bo.dsaj.gov.mo/bo/i/99/42/codregcivcn/codregciv001.asp" target="_blank" class="law-link">查看 View</a>
+            </div>
+
+            <div class="law-card">
+                <div class="law-info">
+                    <div class="law-name-zh">商業登記法典</div>
+                    <div class="law-name-en">Commercial Registration Code</div>
+                </div>
+                <a href="https://bo.dsaj.gov.mo/bo/i/99/41/codregcomcn/codregcom001.asp" target="_blank" class="law-link">查看 View</a>
+            </div>
+
+            <div class="law-card">
+                <div class="law-info">
+                    <div class="law-name-zh">物業登記法典</div>
+                    <div class="law-name-en">Property Registration Code</div>
+                </div>
+                <a href="https://bo.dsaj.gov.mo/bo/i/99/38/codrpcn/codrp001.asp" target="_blank" class="law-link">查看 View</a>
+            </div>
+
+            <div class="category">其他法規 / Other Regulations</div>
+
+            <div class="law-card">
+                <div class="law-info">
+                    <div class="law-name-zh">公證法典</div>
+                    <div class="law-name-en">Notary Code</div>
+                </div>
+                <a href="https://bo.dsaj.gov.mo/bo/i/99/43/codnotcn/codnot001.asp" target="_blank" class="law-link">查看 View</a>
+            </div>
+
+            <div class="law-card">
+                <div class="law-info">
+                    <div class="law-name-zh">工業產權法律制度</div>
+                    <div class="law-name-en">Industrial Property Legal System</div>
+                </div>
+                <a href="https://bo.dsaj.gov.mo/bo/i/99/50/codrjpicn/codrjpi001.asp" target="_blank" class="law-link">查看 View</a>
+            </div>
+        </main>
+
+        <footer>
+            <p>最後更新 Last Updated: 2026-01-14</p>
+            <p style="margin-top: 10px;">
+                <a href="./laws.json" target="_blank">📄 JSON Data</a> | 
+                <a href="https://github.com/YOUR_USERNAME/YOUR_REPO" target="_blank">⭐ GitHub</a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
