@@ -3,266 +3,435 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>澳門法律法典索引 | Macao Legal Codes Index</title>
+    <title>澳門特別行政區法典目錄 | Macau SAR Legal Codes Directory</title>
     <style>
+        :root {
+            --primary: #1a365d;
+            --secondary: #2c5282;
+            --accent: #ed8936;
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            min-height: 100vh;
-            color: #fff;
-            padding: 40px 20px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
         }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        header {
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 2rem;
             text-align: center;
-            margin-bottom: 40px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            background: linear-gradient(90deg, #00d4ff, #7b2cbf);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        
+        .header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
         }
-        .subtitle {
-            color: #888;
+        
+        .header p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+        
+        .header .subtitle {
             font-size: 1rem;
-        }
-        .source {
-            margin-top: 10px;
-            font-size: 0.85rem;
-            color: #666;
-        }
-        .source a {
-            color: #00d4ff;
-            text-decoration: none;
-        }
-        .laws-grid {
-            display: grid;
-            gap: 15px;
-        }
-        .law-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 20px 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
-        .law-card:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: #00d4ff;
-            transform: translateX(5px);
-        }
-        .law-info {
-            flex: 1;
-        }
-        .law-name-zh {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-        .law-name-en {
-            font-size: 0.85rem;
-            color: #888;
-        }
-        .law-link {
-            background: linear-gradient(90deg, #00d4ff, #7b2cbf);
-            color: #fff;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: opacity 0.3s ease;
-        }
-        .law-link:hover {
+            margin-top: 0.5rem;
             opacity: 0.8;
         }
-        footer {
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
             text-align: center;
-            margin-top: 50px;
-            color: #666;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border: 1px solid var(--border);
+        }
+        
+        .stat-card .number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--secondary);
+        }
+        
+        .stat-card .label {
+            color: var(--text-light);
             font-size: 0.85rem;
         }
-        footer a {
-            color: #00d4ff;
+        
+        .category {
+            margin-bottom: 2rem;
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+        
+        .category-header .icon {
+            font-size: 1.5rem;
+        }
+        
+        .category-header h2 {
+            font-size: 1.25rem;
+            color: var(--primary);
+        }
+        
+        .laws-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1rem;
+        }
+        
+        .law-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.25rem;
+            border: 1px solid var(--border);
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .law-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border-color: var(--secondary);
+        }
+        
+        .law-card .title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .law-card .title-en {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 0.75rem;
+        }
+        
+        .law-card .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+        }
+        
+        .law-card .tag {
+            background: #edf2f7;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            color: var(--text-light);
+        }
+        
+        .law-card .decree {
+            color: var(--accent);
+            font-weight: 500;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-light);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+            margin-top: 2rem;
+        }
+        
+        .footer a {
+            color: var(--secondary);
             text-decoration: none;
         }
-        .category {
-            margin-top: 30px;
-            margin-bottom: 15px;
-            font-size: 0.9rem;
-            color: #00d4ff;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 10px;
+        
+        .footer a:hover {
+            text-decoration: underline;
         }
-        @media (max-width: 600px) {
-            h1 { font-size: 1.8rem; }
-            .law-card {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 15px;
+        
+        .search-box {
+            background: var(--card-bg);
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border);
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+        }
+        
+        .search-box input:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(44, 82, 130, 0.1);
+        }
+        
+        @media (max-width: 640px) {
+            .header h1 {
+                font-size: 1.4rem;
             }
-            .law-link {
-                width: 100%;
-                text-align: center;
+            .laws-grid {
+                grid-template-columns: 1fr;
+            }
+            .container {
+                padding: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>澳門法律法典索引</h1>
-            <p class="subtitle">Macao Special Administrative Region Legal Codes Index</p>
-            <p class="source">資料來源 Source: <a href="https://bo.dsaj.gov.mo" target="_blank">澳門特別行政區政府印務局</a></p>
-        </header>
-
-        <main class="laws-grid">
-            <div class="category">基本法典 / Fundamental Codes</div>
+    <header class="header">
+        <h1>澳門特別行政區法典目錄</h1>
+        <p>Macau SAR Legal Codes Directory</p>
+        <p class="subtitle">官方法律資料庫 | Official Legal Database</p>
+    </header>
+    
+    <main class="container">
+        <div class="stats">
+            <div class="stat-card">
+                <div class="number">14</div>
+                <div class="label">法典總數 Total Codes</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">5</div>
+                <div class="label">類別 Categories</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">1995</div>
+                <div class="label">最早年份 Earliest</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">2003</div>
+                <div class="label">最新年份 Latest</div>
+            </div>
+        </div>
+        
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="搜尋法典... Search codes..." onkeyup="filterLaws()">
+        </div>
+        
+        <!-- Criminal Law 刑事法 -->
+        <section class="category" data-category="criminal">
+            <div class="category-header">
+                <span class="icon">⚖️</span>
+                <h2>刑事法 Criminal Law</h2>
+            </div>
+            <div class="laws-grid">
+                <a href="https://bo.dsaj.gov.mo/bo/i/95/46/codpencn/default.asp" class="law-card" target="_blank">
+                    <div class="title">《刑法典》</div>
+                    <div class="title-en">Penal Code</div>
+                    <div class="meta">
+                        <span class="decree">第58/95/M號法令</span>
+                        <span class="tag">1995</span>
+                    </div>
+                </a>
+                <a href="https://bo.dsaj.gov.mo/bo/i/96/36/codpropencn/default.asp" class="law-card" target="_blank">
+                    <div class="title">《刑事訴訟法典》</div>
+                    <div class="title-en">Criminal Procedure Code</div>
+                    <div class="meta">
+                        <span class="decree">第48/96/M號法令</span>
+                        <span class="tag">1996</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+        
+        <!-- Civil Law 民事法 -->
+        <section class="category" data-category="civil">
+            <div class="category-header">
+                <span class="icon">📜</span>
+                <h2>民事法 Civil Law</h2>
+            </div>
+            <div class="laws-grid">
+                <a href="https://bo.dsaj.gov.mo/bo/i/99/31/codcivcn/default.asp" class="law-card" target="_blank">
+                    <div class="title">《民法典》</div>
+                    <div class="title-en">Civil Code</div>
+                    <div class="meta">
+                        <span class="decree">第39/99/M號法令</span>
+                        <span class="tag">1999</span>
+                    </div>
+                </a>
+                <a href="https://bo.dsaj.gov.mo/bo/i/99/40/codprocivcn/default.asp" class="law-card" target="_blank">
+                    <div class="title">《民事訴訟法典》</div>
+                    <div class="title-en">Civil Procedure Code</div>
+                    <div class="meta">
+                        <span class="decree">第55/99/M號法令</span>
+                        <span class="tag">1999</span>
+                    </div>
+                </a>
+                <a href="https://bo.dsaj.gov.mo/bo/i/99/42/codregcivcn/default.asp" class="law-card" target="_blank">
+                    <div class="title">《民事登記法典》</div>
+                    <div class="title-en">Civil Registration Code</div>
+                    <div class="meta">
+                        <span class="decree">第59/99/M號法令</span>
+                        <span class="tag">1999</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+        
+        <!-- Commercial Law 商業法 -->
+        <section class="category" data-category="commercial">
+            <div class="category-header">
+                <span class="icon">💼</span>
+                <h2>商業法 Commercial Law</h2>
+            </div>
+            <div class="laws-grid">
+                <a href="https://bo.dsaj.gov.mo/bo/i/99/31/codcomcn/default.asp" class="law-card" target="_blank">
+                    <div class="title">《商法典》</div>
+                    <div class="title-en">Commercial Code</div>
+                    <div class="meta">
+                        <span class="decree">第40/99/M號法令</span>
+                        <span class="tag">1999</span>
+                    </div>
+                </a>
+                <a href="https://bo.dsaj.gov.mo/bo/i/99/41/codregcomcn/default.asp" class="law-card" target="_blank">
+                    <div class="title">《商業登記法典》</div>
+                    <div class="title-en">Commercial Registration Code</div>
+                    <div class="meta">
+                        <span class="decree">第56/99/M號法令</span>
+                        <span class="tag">1999</span>
+                    </div>
+                </a>
+                <a href="https://bo.dsaj.gov.mo/bo/i/99/50/codrjpicn/default.asp" class="law-card" target="_blank">
+                    <div class="title">《工業產權法律制度》</div>
+                    <div class="title-en">Industrial Property Law</div>
+                    <div class="meta">
+                        <span class="decree">第97/99/M號法令</span>
+                        <span class="tag">1999</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+        
+        <!-- Administrative Law 行政法 -->
+        <section class="category" data-category="administrative">
+            <div class="category-header">
+                <span class="icon">🏛️</span>
+                <h2>行政法 Administrative Law</h2>
+            </div>
+            <div class="laws-grid">
+                <a href="https://bo.dsaj.gov.mo/bo/i/99/41/codpacn/default.asp" class="law-card" target="_blank">
+                    <div class="title">《行政程序法典》</div>
+                    <div class="title-en">Administrative Procedure Code</div>
+                    <div class="meta">
+                        <span class="decree">第57/99/M號法令</span>
+                        <span class="tag">1999</span>
+                    </div>
+                </a>
+                <a href="https://bo.dsaj.gov.mo/bo/i/99/50/codpaccn/default.asp" class="law-card" target="_blank">
+                    <div class="title">《行政訴訟法典》</div>
+                    <div class="title-en">Administrative Litigation Code</div>
+                    <div class="meta">
+                        <span class="decree">第110/99/M號法令</span>
+                        <span class="tag">1999</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+        
+        <!-- Registration & Procedural 登記及程序法 -->
+        <section class="category" data-category="registration">
+            <div class="category-header">
+                <span class="icon">📋</span>
+                <h2>登記及程序法 Registration & Procedural</h2>
+            </div>
+            <div class="laws-grid">
+                <a href="https://bo.dsaj.gov.mo/bo/i/99/38/codrpcn/default.asp" class="law-card" target="_blank">
+                    <div class="title">《物業登記法典》</div>
+                    <div class="title-en">Property Registration Code</div>
+                    <div class="meta">
+                        <span class="decree">第46/99/M號法令</span>
+                        <span class="tag">1999</span>
+                    </div>
+                </a>
+                <a href="https://bo.dsaj.gov.mo/bo/i/99/43/codnotcn/default.asp" class="law-card" target="_blank">
+                    <div class="title">《公證法典》</div>
+                    <div class="title-en">Notary Code</div>
+                    <div class="meta">
+                        <span class="decree">第62/99/M號法令</span>
+                        <span class="tag">1999</span>
+                    </div>
+                </a>
+                <a href="https://bo.dsaj.gov.mo/bo/i/99/43/codrctcn/default.asp" class="law-card" target="_blank">
+                    <div class="title">《法院訴訟費用制度》</div>
+                    <div class="title-en">Court Costs System</div>
+                    <div class="meta">
+                        <span class="decree">第63/99/M號法令</span>
+                        <span class="tag">1999</span>
+                    </div>
+                </a>
+                <a href="https://bo.dsaj.gov.mo/bo/i/2003/26/codprotracn/default.asp" class="law-card" target="_blank">
+                    <div class="title">《勞動訴訟法典》</div>
+                    <div class="title-en">Labor Procedural Code</div>
+                    <div class="meta">
+                        <span class="decree">第9/2003號法律</span>
+                        <span class="tag">2003</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="footer">
+        <p>資料來源 Source: <a href="https://bo.dsaj.gov.mo" target="_blank">澳門特別行政區公報 Macau SAR Official Gazette</a></p>
+        <p style="margin-top: 0.5rem;">最後更新 Last Updated: 2026年1月 | January 2026</p>
+    </footer>
+    
+    <script>
+        function filterLaws() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.law-card');
             
-            <div class="law-card">
-                <div class="law-info">
-                    <div class="law-name-zh">民法典</div>
-                    <div class="law-name-en">Civil Code</div>
-                </div>
-                <a href="https://bo.dsaj.gov.mo/bo/i/99/31/codcivcn/codciv0001.asp" target="_blank" class="law-link">查看 View</a>
-            </div>
-
-            <div class="law-card">
-                <div class="law-info">
-                    <div class="law-name-zh">刑法典</div>
-                    <div class="law-name-en">Penal Code</div>
-                </div>
-                <a href="https://bo.dsaj.gov.mo/bo/i/95/46/codpencn/codpen0001.asp" target="_blank" class="law-link">查看 View</a>
-            </div>
-
-            <div class="law-card">
-                <div class="law-info">
-                    <div class="law-name-zh">商法典</div>
-                    <div class="law-name-en">Commercial Code</div>
-                </div>
-                <a href="https://bo.dsaj.gov.mo/bo/i/99/31/codcomcn/codcom0001.asp" target="_blank" class="law-link">查看 View</a>
-            </div>
-
-            <div class="category">訴訟法典 / Procedure Codes</div>
-
-            <div class="law-card">
-                <div class="law-info">
-                    <div class="law-name-zh">民事訴訟法典</div>
-                    <div class="law-name-en">Civil Procedure Code</div>
-                </div>
-                <a href="https://bo.dsaj.gov.mo/bo/i/99/40/codprocivcn/codprociv0001.asp" target="_blank" class="law-link">查看 View</a>
-            </div>
-
-            <div class="law-card">
-                <div class="law-info">
-                    <div class="law-name-zh">刑事訴訟法典</div>
-                    <div class="law-name-en">Criminal Procedure Code</div>
-                </div>
-                <a href="https://bo.dsaj.gov.mo/bo/i/96/36/codpropencn/codpropen0001.asp" target="_blank" class="law-link">查看 View</a>
-            </div>
-
-            <div class="law-card">
-                <div class="law-info">
-                    <div class="law-name-zh">行政訴訟法典</div>
-                    <div class="law-name-en">Administrative Litigation Code</div>
-                </div>
-                <a href="https://bo.dsaj.gov.mo/bo/i/99/50/codpaccn/codpac001.asp" target="_blank" class="law-link">查看 View</a>
-            </div>
-
-            <div class="law-card">
-                <div class="law-info">
-                    <div class="law-name-zh">勞動訴訟法典</div>
-                    <div class="law-name-en">Labour Procedure Code</div>
-                </div>
-                <a href="https://bo.dsaj.gov.mo/bo/i/2003/26/codprotracn/codprotra001.asp" target="_blank" class="law-link">查看 View</a>
-            </div>
-
-            <div class="category">行政法規 / Administrative Regulations</div>
-
-            <div class="law-card">
-                <div class="law-info">
-                    <div class="law-name-zh">行政程序法典</div>
-                    <div class="law-name-en">Administrative Procedure Code</div>
-                </div>
-                <a href="https://bo.dsaj.gov.mo/bo/i/99/41/codpacn/codpa001.asp" target="_blank" class="law-link">查看 View</a>
-            </div>
-
-            <div class="law-card">
-                <div class="law-info">
-                    <div class="law-name-zh">法院訴訟費用制度</div>
-                    <div class="law-name-en">Court Costs System</div>
-                </div>
-                <a href="https://bo.dsaj.gov.mo/bo/i/99/43/codrctcn/codrct001.asp" target="_blank" class="law-link">查看 View</a>
-            </div>
-
-            <div class="category">登記法典 / Registration Codes</div>
-
-            <div class="law-card">
-                <div class="law-info">
-                    <div class="law-name-zh">民事登記法典</div>
-                    <div class="law-name-en">Civil Registration Code</div>
-                </div>
-                <a href="https://bo.dsaj.gov.mo/bo/i/99/42/codregcivcn/codregciv001.asp" target="_blank" class="law-link">查看 View</a>
-            </div>
-
-            <div class="law-card">
-                <div class="law-info">
-                    <div class="law-name-zh">商業登記法典</div>
-                    <div class="law-name-en">Commercial Registration Code</div>
-                </div>
-                <a href="https://bo.dsaj.gov.mo/bo/i/99/41/codregcomcn/codregcom001.asp" target="_blank" class="law-link">查看 View</a>
-            </div>
-
-            <div class="law-card">
-                <div class="law-info">
-                    <div class="law-name-zh">物業登記法典</div>
-                    <div class="law-name-en">Property Registration Code</div>
-                </div>
-                <a href="https://bo.dsaj.gov.mo/bo/i/99/38/codrpcn/codrp001.asp" target="_blank" class="law-link">查看 View</a>
-            </div>
-
-            <div class="category">其他法規 / Other Regulations</div>
-
-            <div class="law-card">
-                <div class="law-info">
-                    <div class="law-name-zh">公證法典</div>
-                    <div class="law-name-en">Notary Code</div>
-                </div>
-                <a href="https://bo.dsaj.gov.mo/bo/i/99/43/codnotcn/codnot001.asp" target="_blank" class="law-link">查看 View</a>
-            </div>
-
-            <div class="law-card">
-                <div class="law-info">
-                    <div class="law-name-zh">工業產權法律制度</div>
-                    <div class="law-name-en">Industrial Property Legal System</div>
-                </div>
-                <a href="https://bo.dsaj.gov.mo/bo/i/99/50/codrjpicn/codrjpi001.asp" target="_blank" class="law-link">查看 View</a>
-            </div>
-        </main>
-
-        <footer>
-            <p>最後更新 Last Updated: 2026-01-14</p>
-            <p style="margin-top: 10px;">
-                <a href="./laws.json" target="_blank">📄 JSON Data</a> | 
-                <a href="https://github.com/YOUR_USERNAME/YOUR_REPO" target="_blank">⭐ GitHub</a>
-            </p>
-        </footer>
-    </div>
+            cards.forEach(card => {
+                const title = card.querySelector('.title').textContent.toLowerCase();
+                const titleEn = card.querySelector('.title-en').textContent.toLowerCase();
+                const decree = card.querySelector('.decree').textContent.toLowerCase();
+                
+                if (title.includes(input) || titleEn.includes(input) || decree.includes(input)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </body>
 </html>
